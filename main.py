@@ -6,11 +6,15 @@ from geodatasets import get_path
 from shapely import wkt
 
 sns.set_theme(style="ticks", palette="pastel")
+
+# Load & View Data
 df_colors = pd.read_csv('MTA_Colors.csv')
 df_riders = pd.read_csv('MTA_DailyRidershipData.csv')
 df_stations = pd.read_csv('MTA_SubwayStations.csv')
 
-# *** LINE PLOT
+print(df_stations.info())
+
+# *** LINE PLOT ***
 
 # Convert Date column to time-series format
 df_riders['Date'] = pd.to_datetime(df_riders['Date'])
@@ -28,7 +32,7 @@ plt.xticks(rotation=45)
 plt.savefig('subway_ridership.png', bbox_inches='tight')
 plt.close()
 
-# SCATTER PLOT
+# *** SCATTER PLOT ***
 
 # Filter stations to include Manhattan only
 df_stations_filtered = df_stations[df_stations['Borough'] == 'M'].reset_index(drop=True)
