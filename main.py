@@ -122,6 +122,7 @@ df_riders_filtered = df_riders[(df_riders['Date'] >= '2020-01-01') & (df_riders[
 
 # Set the Date column as the index
 df_riders_filtered.set_index('Date', inplace=True)
+
 df_riders_filtered.rename(columns={
     'Subways: Total Estimated Ridership': 'Subways',
     'Buses: Total Estimated Ridership': 'Buses',

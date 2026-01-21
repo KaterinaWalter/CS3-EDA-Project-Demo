@@ -1,30 +1,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from wordcloud import WordCloud
+from wordcloud import WordCloud 
 from collections import Counter
-
-sns.set_theme(style="ticks", palette="pastel")
 
 # Load & View Data
 df_colors = pd.read_csv('MTA_Colors.csv')
 
-print(df_colors.info())
-
-# *** WORD CLOUD ***
-
-# format a series (column) from the dataframe to use
-wc_series = df_colors['Service']
-print(wc_series)
-service_list = wc_series.values
-print(service_list)
-print(type(service_list))
+# Format a series (column) from the dataframe to use
+service_series = df_colors['Service']
+service_list = service_series.values
 services = Counter(service_list)
-#service_str = ' '.join(item for item in service_list.split())
-#print(service_str)
-
-# .generate takes in a STRING like:
-sample_str = "penne fusilli rigatoni gnocchi spaghetti farfalle linguini bucatini lasagna stelline"
 
 # Create a wordcloud from that data
 wordcloud = WordCloud(width=800, height=400).generate_from_frequencies(services)
